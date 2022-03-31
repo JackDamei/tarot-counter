@@ -1,0 +1,160 @@
+.centered-div {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.selector-wrapper,
+.form-wrapper {
+  border: solid 1px lightgray;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  margin: 5px;
+}
+.selector-wrapper {
+  padding: 5px;
+}
+.form-title {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+}
+.form-wrapper {
+  padding: 30px;
+}
+.form-joueur-div {
+  width: 400px;
+  margin: 20px;
+}
+.form-joueur-input {
+  margin-left: 20px;
+  padding: 5px;
+}
+.form-validation-div {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  color: #444444;
+}
+.selector-label,
+.form-label {
+  margin-left: 15px;
+}
+.selector-label {
+  font-weight: bold;
+}
+.points-label,
+.option-label {
+  font-size: 15px;
+}
+
+.option-label {
+  display: inline-block;
+  width: 100px;
+}
+
+.oudlersList-wrapper {
+  display: flex;
+  width: fit-content;
+  text-align: center;
+}
+
+.oudler-wrapper {
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.buttonGroup-wrapper {
+  display: flex;
+}
+
+.choice-button,
+.footer-button {
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  flex: 1;
+  margin: 5px;
+  border: solid 2px darkolivegreen;
+  border-radius: 5px;
+  padding: 5px;
+}
+.footer-button {
+  border: solid 3px darkolivegreen;
+}
+.footer-button:disabled {
+  background-color: #cccccc;
+  border-color: #aaaaaa;
+}
+.footer-button:enabled:hover,
+a.footer-button:hover {
+  background-color: #dddddd;
+}
+.footer-button:enabled:active,
+a.footer-button:active {
+  background-color: darkolivegreen;
+  color: #eeeeee;
+}
+.option-wrapper {
+  margin: 5px;
+}
+
+#points {
+  width: calc(100% - 20px);
+  margin: 10px;
+}
+
+#points-display-div {
+  display: flex;
+}
+.sided-points-display-div {
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.points-display-text {
+  display: inline-block;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 2px;
+}
+#attaque-points-display-text {
+  width: 70px;
+}
+#defense-points-display-text {
+  width: 35px;
+}
+.points-amount {
+  font-size: 16px;
+}
+#attaque-gap-to-target {
+  margin-left: 5px;
+  font-size: 12px;
+}
+.points-button {
+  margin: 5px;
+  padding: 2px;
+  border: solid 2px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 30px;
+}
+select {
+  margin: 2px;
+  width: 200px;
+  text-align: center;
+}
+#poignee-type-selector {
+  width: 100px;
+}

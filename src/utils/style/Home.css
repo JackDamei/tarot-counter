@@ -1,0 +1,23 @@
+.home-navigation-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page-button {
+  background-color: #eeeeee;
+  width: 100%;
+  text-align: center;
+  margin: 30px;
+  border-style: none;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+.home-page-button:hover {
+  background-color: #dddddd;
+}
+.home-page-button:active {
+  background-color: #aaaaaa;
+}
