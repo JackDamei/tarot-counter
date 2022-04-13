@@ -2,7 +2,11 @@ import styled from 'styled-components'
 import { pointsTarget, countAttaqueOudlers } from '../../utils/calcul'
 import colors from '../../utils/style/colors'
 
-const PointsRangeInput = styled.input`
+interface PointsRangeInputProps {
+  points: number
+  oudlers: boolean[]
+}
+const PointsRangeInput = styled.input<PointsRangeInputProps>`
   --color: ${(props) =>
     props.points < pointsTarget[countAttaqueOudlers(props.oudlers)]
       ? colors.defenseColor

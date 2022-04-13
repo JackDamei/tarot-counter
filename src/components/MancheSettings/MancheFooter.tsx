@@ -1,8 +1,14 @@
-import { useContext } from 'react'
-import { MancheDataContext } from '../../utils/context'
+import { FC, useContext } from 'react'
+import { MancheDataContext } from '../../utils/context/MancheDataContext'
 import { calculScoreManche } from '../../utils/calcul'
+import { useNavigate } from 'react-router-dom'
 
-function MancheFooter({ mancheId, originalValues, offline }) {
+const MancheFooter: FC<MancheFooterProps> = ({
+  mancheId = '',
+  gameId = '',
+  originalValues,
+  offline,
+}) => {
   const mancheData = useContext(MancheDataContext)
   const [preneur, setPreneur] = mancheData.preneurState
   const [contrat, setContrat] = mancheData.contratState
@@ -41,6 +47,33 @@ function MancheFooter({ mancheId, originalValues, offline }) {
     setChelem(o_chelem)
   }
 
+  const navigate = useNavigate()
+
+  function validateManche() {
+    if (!offline && preneur === '') {
+      alert('Veuillez sélectionner un joueur')
+      return
+    }
+    if (contrat === '') {
+      alert('Veuillez sélectionner un contrat')
+      return
+    }
+    const score = calculScoreManche(
+      contrat,
+      [atout01, atout21, excuse],
+      points,
+      petitAuBout,
+      poigneeLevel,
+      chelem
+    )
+    alert(
+      `L'attaque marque ${
+        3 * score
+      } points, la défense marque ${-score} points !`
+    )
+    if (!offline) navigate('/dashboard/5')
+  }
+
   return (
     <div id="validation-wrapper" className="selector-wrapper">
       <div id="validationButtons-wrapper" className="buttonGroup-wrapper">
@@ -48,29 +81,7 @@ function MancheFooter({ mancheId, originalValues, offline }) {
           id="validate-button"
           className="footer-button"
           disabled={(!offline && preneur === '') || contrat === ''}
-          onClick={(e) => {
-            if (!offline && preneur === '') {
-              alert('Veuillez sélectionner un joueur')
-              return
-            }
-            if (contrat === '') {
-              alert('Veuillez sélectionner un contrat')
-              return
-            }
-            const score = calculScoreManche(
-              contrat,
-              [atout01, atout21, excuse],
-              points,
-              petitAuBout,
-              poigneeLevel,
-              chelem
-            )
-            alert(
-              `L'attaque marque ${
-                3 * score
-              } points, la défense marque ${-score} points !`
-            )
-          }}
+          onClick={(e) => validateManche()}
         >
           Valider la partie
         </button>
@@ -87,3 +98,21 @@ function MancheFooter({ mancheId, originalValues, offline }) {
 }
 
 export default MancheFooter
+
+interface MancheFooterProps {
+  mancheId?: string
+  gameId?: string
+  originalValues: {
+    o_preneur: string
+    o_contrat: string
+    o_atout01: boolean
+    o_atout21: boolean
+    o_excuse: boolean
+    o_points: number
+    o_petitAuBout: boolean
+    o_poigneeLevel: number
+    o_poigneeType: string
+    o_chelem: string
+  }
+  offline: boolean
+}

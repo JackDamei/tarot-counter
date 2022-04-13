@@ -2,7 +2,10 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { countAttaqueOudlers, pointsTarget } from '../../utils/calcul'
 
-export const ChoiceButton = styled.button`
+interface ChoiceButtonProps {
+  selected: string
+}
+export const ChoiceButton = styled.button<ChoiceButtonProps>`
   ${(props) =>
     props.selected === props.value
       ? `background-color: darkolivegreen;
@@ -10,11 +13,21 @@ export const ChoiceButton = styled.button`
       : `background-color: #eeeeee;
     color: darkolivegreen;`}
 `
-export const OudlerWrapper = styled.div`
+
+interface OudlerWrapperProps {
+  isAttaque: boolean
+}
+export const OudlerWrapper = styled.div<OudlerWrapperProps>`
   background-color: ${(props) =>
     props.isAttaque ? colors.attaqueColor : colors.defenseColor};
 `
-export const PointsDisplay = styled.span`
+
+interface PointsDisplayProps {
+  type: 'attaque' | 'defense'
+  points: number
+  oudlers: boolean[]
+}
+export const PointsDisplay = styled.span<PointsDisplayProps>`
   --team-color: ${(props) =>
     props.type === 'defense' ? colors.defenseColor : colors.attaqueColor};
   --color1: ${(props) =>

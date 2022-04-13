@@ -1,14 +1,14 @@
-import { useContext } from 'react'
-import { MancheDataContext } from '../../utils/context'
+import { FC, useContext } from 'react'
+import { MancheDataContext } from '../../utils/context/MancheDataContext'
 import { ChoiceButton } from './styled'
 
-function PreneurButton(props) {
+const PreneurButton: FC<PreneurButtonProps> = (props) => {
   const [preneur, setPreneur] = props.preneurState
   const value = props.value
   return (
     <ChoiceButton
       className="choice-button"
-      onClick={(e) => setPreneur(value)}
+      onClick={() => setPreneur(value)}
       selected={preneur}
       value={value}
     >
@@ -17,7 +17,7 @@ function PreneurButton(props) {
   )
 }
 
-function PreneurSelector({ players }) {
+const PreneurSelector: FC<PreneurSelectorProps> = ({ players }) => {
   const [preneur, setPreneur] = useContext(MancheDataContext).preneurState
   return (
     <div id="preneurSelector-wrapper" className="selector-wrapper">
@@ -36,3 +36,12 @@ function PreneurSelector({ players }) {
 }
 
 export default PreneurSelector
+
+interface PreneurButtonProps {
+  preneurState: [string, React.Dispatch<React.SetStateAction<string>>]
+  value: string
+}
+
+interface PreneurSelectorProps {
+  players: string[]
+}

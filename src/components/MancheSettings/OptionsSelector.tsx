@@ -1,7 +1,7 @@
-import { useContext } from 'react'
-import { MancheDataContext } from '../../utils/context'
+import { FC, useContext } from 'react'
+import { MancheDataContext } from '../../utils/context/MancheDataContext'
 
-function OptionsSelector() {
+const OptionsSelector: FC = () => {
   const mancheData = useContext(MancheDataContext)
   const [atout01] = mancheData.atout01State
   const [petitAuBout, setPetitAuBout] = mancheData.petitAuBoutState
@@ -16,7 +16,7 @@ function OptionsSelector() {
         <label className="option-label">Petit au bout</label>
         <select
           id="petitAuBout-selector"
-          value={petitAuBout}
+          value={petitAuBout ? 'true' : 'false'}
           onChange={(e) => setPetitAuBout(e.target.value === 'true')}
         >
           <option value="false">non</option>

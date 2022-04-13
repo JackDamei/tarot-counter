@@ -1,14 +1,15 @@
+import { FC } from 'react'
 import { useContext } from 'react'
-import { MancheDataContext } from '../../utils/context'
+import { MancheDataContext } from '../../utils/context/MancheDataContext'
 import { ChoiceButton } from './styled'
 
-function ContratButton(props) {
+const ContratButton: FC<ContratButtonProps> = (props) => {
   const [contrat, setContrat] = props.contratState
   const value = props.value
   return (
     <ChoiceButton
       className="choice-button"
-      onClick={(e) => setContrat(value)}
+      onClick={() => setContrat(value)}
       selected={contrat}
       value={value}
     >
@@ -17,8 +18,11 @@ function ContratButton(props) {
   )
 }
 
-function ContratSelector() {
-  const [contrat, setContrat] = useContext(MancheDataContext).contratState
+const ContratSelector: FC = () => {
+  const [contrat, setContrat] = useContext(MancheDataContext).contratState as [
+    string,
+    React.Dispatch<React.SetStateAction<string>>
+  ]
   return (
     <div id="contractSelector-wrapper" className="selector-wrapper">
       <label className="selector-label">Contrat</label>
@@ -39,3 +43,8 @@ function ContratSelector() {
 }
 
 export default ContratSelector
+
+interface ContratButtonProps {
+  contratState: [string, React.Dispatch<React.SetStateAction<string>>]
+  value: string
+}

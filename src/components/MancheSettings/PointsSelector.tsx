@@ -1,6 +1,6 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { countAttaqueOudlers, pointsTarget } from '../../utils/calcul'
-import { MancheDataContext } from '../../utils/context'
+import { MancheDataContext } from '../../utils/context/MancheDataContext'
 import { signedNumber } from '../../utils/number'
 import PointsRangeInput from './PointsRangeInput'
 import { PointsButton, PointsDisplay } from './styled'
@@ -79,7 +79,7 @@ function PointsSelector() {
         max={91}
         step={1}
         value={points}
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setPoints(+e.target.value)
         }}
         points={points}

@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
+import { FC } from 'react'
 import MancheSettings from '../components/MancheSettings'
 
-function NouvelleManche(props) {
-  const offline = props.offline
+interface NouvelleMancheProps {
+  offline?: boolean
+}
 
+const NouvelleManche: FC<NouvelleMancheProps> = ({ offline = false }) => {
   const o_preneur = ''
   const o_contrat = ''
   const o_atout01 = false
